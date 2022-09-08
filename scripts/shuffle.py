@@ -2,6 +2,7 @@ import random
 from datetime import datetime
 
 TITLE = "Jigsaw Pass Raffle #1 Test Drive"
+DESC = "..."
 
 FROM_ID = 1
 TO_ID = 262
@@ -12,6 +13,8 @@ LOG_PATT = "Round {:03} => {}"
 
 # basic info
 print(TITLE)
+print(DESC)
+print("")
 print("Raffle Time: {}".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 print("SUPPLY: {} ({}-{})".format(SUPPLY, FROM_ID, TO_ID))
 print("")

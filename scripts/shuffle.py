@@ -7,7 +7,7 @@ DESC = "1x Movie Ticket from MajorVerse"
 FROM_ID = 1
 TO_ID = 262
 PRICE_NUM = 1
-SKIP_IDS = [ 179 ]
+SKIP_IDS = [ 179, 241 ]
 
 URL = "https://qx.app/asset/0x49Bb981c8b721B9873093f519337329f794E8577/{}"
 LOG_PATT = "Round {:03} => {}"

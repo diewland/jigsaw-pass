@@ -46,10 +46,14 @@ for token_id in range(FROM_ID, TO_ID+1):
     tier_info = attrs[tier_idx]
     tier = tier_info['value'].lower()
  
+    # verified flag
+    verified_flag = find_index(attrs, 'trait_type', 'Verified') > -1
+
     # update img
     data['image'] = IMG_URL.format(tier, point)
+    if verified_flag: data['image'] += '&v=1'
 
-    print("ID#{} tier: {}, point: {}".format(token_id, tier, point))
+    print("ID#{} tier: {}, point: {}, verified: {}".format(token_id, tier, point, verified_flag))
 
     if WRITE_FILE:
         with open(path, "w") as f:

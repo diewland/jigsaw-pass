@@ -3,6 +3,7 @@
 
   // prepare data from query string
   $keys = array(
+    array('id', -1),
     array('tier', 'basic'),
     array('score', 0),
     array('v', 0),
@@ -12,6 +13,7 @@
     $value = isset($_GET[$key]) ? $_GET[$key] : $default;
     $$key = $value;
   }
+  $id += 0;
   $score += 0;
   $v += 0;
 
@@ -19,16 +21,19 @@
   $path = "./pass_$tier.png";
   $img = imagecreatefrompng($path);
 
-  // print point
-  $text = "Points $score";
-  $color = imagecolorallocate($img, 0, 0, 0);
+  // font
   $font_path = "PressStart2P-Regular.ttf";
-  imagettftext($img, 30, 0, 10, 50, $color, $font_path, $text);
+  $color = imagecolorallocate($img, 0, 0, 0);
 
-  // print verified
+  // print verified + id + points
+  $text_id = "#$id $$score";
   if ($v == 1) {
     $ico = imagecreatefrompng('./ico_verified.png');
-    imagecopyresampled($img, $ico, 435, 430, 0, 0, 75, 75, 75, 75);
+    imagecopyresampled($img, $ico, 55, 105, 0, 0, 50, 50, 50, 50);
+    imagettftext($img, 30, 15, 115, 147, $color, $font_path, $text_id);
+  }
+  else {
+    imagettftext($img, 30, 15, 65, 160, $color, $font_path, $text_id);
   }
 
   // send to browser & release memory

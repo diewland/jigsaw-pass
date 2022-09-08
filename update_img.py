@@ -6,7 +6,7 @@ from pprint import pprint as pp
 START_ID = 0
 MAX_ID = 999
 DATA_DIR = 'data'
-IMG_URL = "https://jigsaw.diew.app/pass_img/?tier={}&score={}"
+IMG_URL = "https://jigsaw.diew.app/pass_img/?id={}&tier={}&score={}"
 
 # action config
 WRITE_FILE = False
@@ -50,7 +50,7 @@ for token_id in range(FROM_ID, TO_ID+1):
     verified_flag = find_index(attrs, 'trait_type', 'Verified') > -1
 
     # update img
-    data['image'] = IMG_URL.format(tier, point)
+    data['image'] = IMG_URL.format(token_id, tier, point)
     if verified_flag: data['image'] += '&v=1'
 
     print("ID#{} tier: {}, point: {}, verified: {}".format(token_id, tier, point, verified_flag))

@@ -6,6 +6,7 @@ DESC = "1x Movie Ticket from MajorVerse"
 
 FROM_ID = 1
 TO_ID = 262
+PRICE_NUM = 1
 SKIP_IDS = [ 179 ]
 
 URL = "https://qx.app/asset/0x49Bb981c8b721B9873093f519337329f794E8577/{}"
@@ -26,13 +27,13 @@ print("Skip IDs: {}".format(SKIP_IDS))
 print("")
 
 # loop
-for no in range(supply):
+for no in range(supply - PRICE_NUM+1):
     print(LOG_PATT.format(no, bulk))
-    if (len(bulk) == 1):
-        winner_id = bulk[0]
+    if (len(bulk) == PRICE_NUM):
         print("")
-        print("Winner is {} 🎉".format(winner_id))
-        print(URL.format(winner_id))
+        print("Winner is {} 🎉".format(bulk))
+        for winner_id in bulk:
+            print(URL.format(winner_id))
     else:
         bulk = bulk[1:]
         random.shuffle(bulk)

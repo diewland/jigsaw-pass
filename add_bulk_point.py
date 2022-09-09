@@ -1,6 +1,7 @@
-import json, glob
+import json, glob, sys
 from collections import OrderedDict
 from pprint import pprint as pp
+from helper import find_index
 
 # log
 # 20220905 00:19 [welcome points] add first 100 members (ID 1-100) 100 points
@@ -16,12 +17,10 @@ FROM_ID = 1
 TO_ID = 100
 ADD_POINT = 100
 
-# helper
-def find_index(lst, key, value):
-    for i, dic in enumerate(lst):
-        if dic[key] == value:
-            return i
-    return -1
+# argv
+if (len(sys.argv) > 1):
+    if sys.argv[1] == "CONFIRM":
+        WRITE_FILE = True
 
 # main
 for token_id in range(FROM_ID, TO_ID+1):

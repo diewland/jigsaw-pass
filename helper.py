@@ -14,6 +14,12 @@ def get_trait_value(data, key):
         raise Exception("ERROR: {} not found".format(key))
     return (idx, attrs[idx]["value"])
 
+def get_safe_trait_value(data, key):
+    try:
+        return get_trait_value(data, key)
+    except:
+        return (-1, None)
+
 def write_file(path, data):
     with open(path, "w") as f:
         json.dump(data, f)

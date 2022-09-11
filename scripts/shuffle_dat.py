@@ -1,4 +1,4 @@
-import random
+import random, time
 from datetime import datetime
 from pprint import pprint as pp
 
@@ -6,6 +6,7 @@ TITLE = "Jigsaw Pass Raffle #1 Test Drive"
 DESC = "1x Movie Ticket from MajorVerse"
 
 PRICE_NUM = 2
+ROUND_DELAY = 0 #s
 DATA_PATH = 'data.dat'
 LOG_PATT = "Round {:03} => {}"
 
@@ -36,3 +37,4 @@ for no in range(supply - PRICE_NUM+1):
     else:
         bulk = bulk[1:]
         random.shuffle(bulk)
+        time.sleep(ROUND_DELAY)

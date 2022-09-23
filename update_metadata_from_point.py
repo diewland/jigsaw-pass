@@ -36,20 +36,32 @@ for token_id in range(FROM_ID, TO_ID+1):
     point_info = attrs[point_idx]
     point = int(point_info['value'])
 
-    # get current tier
+    # calc tier
+    # basic silver  gold    green   red
+    # 0     1_000   2_500   5_000   10_000
+    tier = 'Basic'
+    if point >= 10_000:
+        tier = 'Red'
+    elif point >= 5_000:
+        tier = 'Green'
+    elif point >= 2_500:
+        tier = 'Gold'
+    elif point >= 1_000:
+        tier = 'Silver'
+
+    # update tier
     tier_idx = find_index(attrs, 'trait_type', 'Tier')
     if tier_idx == -1:
         print(path)
         pp(data)
         raise Exception("ERROR: tier not found")
-    tier_info = attrs[tier_idx]
-    tier = tier_info['value'].lower()
+    attrs[tier_idx]['value'] = tier
  
     # verified flag
     verified_flag = find_index(attrs, 'trait_type', 'Verified') > -1
 
     # update img
-    data['image'] = IMG_URL.format(token_id, tier, point)
+    data['image'] = IMG_URL.format(token_id, tier.lower(), point)
     if verified_flag: data['image'] += '&v=1'
 
     print("ID#{} tier: {}, point: {}, verified: {}".format(token_id, tier, point, verified_flag))

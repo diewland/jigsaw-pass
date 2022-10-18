@@ -5,6 +5,7 @@ from helper import find_index
 
 # log
 # 20220905 00:19 [welcome points] add first 100 members (ID 1-100) 100 points
+# 20221019 01:03 [celebrate minted out] add 100 points to all members
 
 # constant
 START_ID = 0
@@ -14,7 +15,7 @@ DATA_DIR = 'data'
 # action config
 WRITE_FILE = False
 FROM_ID = 1
-TO_ID = 100
+TO_ID = 999
 ADD_POINT = 100
 
 # argv
